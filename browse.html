@@ -13,46 +13,82 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="gradient-background">
-      <nav class="navbar navbar-expand-lg container">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="./index.html"
-            ><img src="./assets/logo.png" alt="logo" height="150" width="150"
-          /></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="collapse navbar-collapse justify-content-end"
-            id="navbarSupportedContent"
-          >
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="./index.html"
-                  >Home</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./browse.html">Browse</a>
-              </li>
-            </ul>
+    <div class="wrapper gradient-background">
+      <div class="container">
+        <header>
+          <nav class="navbar navbar-expand-lg container">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="./index.html"
+                ><img
+                  src="./assets/logo.png"
+                  alt="logo"
+                  height="150"
+                  width="150"
+              /></a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse justify-content-end"
+                id="navbarSupportedContent"
+              >
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link active"
+                      aria-current="page"
+                      href="./index.html"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./browse.html">Browse</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <hr />
+
+        <!-- search bar -->
+
+        <form action="">
+          <div class="row g-2">
+            <div class="col-md">
+              <input
+                id="search"
+                type="text"
+                class="form-control bg-transparent border-dark"
+                placeholder="Search user by name..."
+              />
+            </div>
+            <div class="col-md">
+              <select
+                name=""
+                id=""
+                class="form-control bg-transparent border-dark"
+                onchange="handleOnGenderSelect(this)"
+              >
+                <option vale="">Show All</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
