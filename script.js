@@ -1,5 +1,5 @@
 let dogList = [];
-const api = "https://dog.ceo/api/breeds/image/random/6";
+const api = "https://dog.ceo/api/breeds/image/random/50";
 const dogListELm = document.getElementById("list");
 
 const fetchDogs = async (url = api) => {
@@ -21,10 +21,13 @@ const display = (dogList) => {
   console.log(dogList);
   let i = 0;
   dogList.forEach((dog) => {
+    const name = dog.split("/");
+    const breedName = name[name.indexOf("breeds") + 1];
+    console.log(breedName);
     dogCard += `<div class="card" style="width: 18rem">
     <img src="${dogList[i]}" class="card-img-top" alt="Dog Image" />
     <div class="card-body">
-      <h5 class="card-title">Name</h5>
+      <h5 class="card-title">${breedName}</h5>
       <p class="card-text">
         Some quick example text to build on the card title and make up the
         bulk of the card's content.
@@ -35,4 +38,10 @@ const display = (dogList) => {
   });
   dogListELm.innerHTML = dogCard;
   document.getElementById("dogCount").innerText = dogList.length;
+};
+
+const handleOnBreedSelect = (e) => {
+  const g = e.value;
+  const urlWg = api + "&gender=" + g;
+  fetchDogs(urlWg);
 };
