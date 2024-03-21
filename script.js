@@ -1,5 +1,5 @@
 let dogList = [];
-const api = "https://dogapi.dog/api/v2/breeds";
+const api = "https://dog.ceo/api/breeds/image/random/6";
 const dogListELm = document.getElementById("list");
 
 const fetchDogs = async (url = api) => {
@@ -7,8 +7,8 @@ const fetchDogs = async (url = api) => {
     const response = await fetch(url);
     const data = await response.json();
     dogList = data.message;
-
-    display(dogList);
+    console.log(dogList);
+    // display(dogList);
   } catch (error) {
     console.log(error);
   }
@@ -22,7 +22,7 @@ const display = (dogList) => {
 
   dogList.forEach((dog) => {
     dogCard += `<div class="card" style="width: 18rem">
-    <img src="${dog}" class="card-img-top" alt="Dog Image" />
+    <img src="${dog.images}" class="card-img-top" alt="Dog Image" />
     <div class="card-body">
       <h5 class="card-title">Name</h5>
       <p class="card-text">
