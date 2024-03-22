@@ -62,3 +62,11 @@ const handleOnBreedSelect = () => {
     : dogList;
   display(filteredDogs);
 };
+
+document.getElementById("search").addEventListener("keyup", (e) => {
+  const searchedName = e.target.value.toLowerCase();
+
+  const filter = dogList.filter((dog) => {
+    const DogName = extractBreedName(dog).toLowerCase();
+  });
+});
