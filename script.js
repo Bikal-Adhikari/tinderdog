@@ -24,7 +24,7 @@ const display = (dogList) => {
   dogList.forEach((dog) => {
     const breedName = extractBreedName(dog);
     const aboutDog = generateRandomDescription();
-    dogCard += `<div class="card" style="width: 18rem">
+    dogCard += `<div class="card flex-grow-1" style="width: 18rem">
     <img src="${dog}" class="card-img-top" alt="Dog Image"/>
     <div class="card-body">
       <h5 class="card-title">${breedName}</h5>
