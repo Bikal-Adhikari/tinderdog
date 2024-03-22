@@ -1,6 +1,7 @@
 let dogList = [];
 const api = "https://dog.ceo/api/breeds/image/random/50";
-const dogListELm = document.getElementById("list");
+const dogListElm = document.getElementById("list");
+const breedSelectElm = document.getElementById("breeds-1");
 
 const fetchDogs = async (url = api) => {
   try {
@@ -9,6 +10,7 @@ const fetchDogs = async (url = api) => {
     dogList = data.message;
 
     display(dogList);
+    populateBreedSelect(dogList);
   } catch (error) {
     console.log(error);
   }
@@ -18,14 +20,11 @@ fetchDogs();
 
 const display = (dogList) => {
   let dogCard = "";
-  console.log(dogList);
   let i = 0;
   dogList.forEach((dog) => {
-    const name = dog.split("/");
-    const breedName = name[name.indexOf("breeds") + 1];
-    console.log(breedName);
+    const breedName = extractBreedName(dog);
     dogCard += `<div class="card" style="width: 18rem">
-    <img src="${dogList[i]}" class="card-img-top" alt="Dog Image" />
+    <img src="${dog}" class="card-img-top" alt="Dog Image" />
     <div class="card-body">
       <h5 class="card-title">${breedName}</h5>
       <p class="card-text">
@@ -36,12 +35,30 @@ const display = (dogList) => {
   </div> `;
     i++;
   });
-  dogListELm.innerHTML = dogCard;
+
+  dogListElm.innerHTML = dogCard;
   document.getElementById("dogCount").innerText = dogList.length;
 };
 
-const handleOnBreedSelect = (e) => {
-  const g = e.value;
-  const urlWg = api + "&gender=" + g;
-  fetchDogs(urlWg);
+const extractBreedName = (url) => {
+  const name = url.split("/");
+  return name[name.indexOf("breeds") + 1];
+};
+
+const populateBreedSelect = (dogList) => {
+  const uniqueBreeds = [
+    ...new Set(dogList.map((dog) => extractBreedName(dog))),
+  ];
+  breedSelectElm.innerHTML = `<option value="">Show All</option>`;
+  uniqueBreeds.forEach((breed) => {
+    breedSelectElm.innerHTML += `<option value="${breed}">${breed}</option>`;
+  });
+};
+
+const handleOnBreedSelect = () => {
+  const selectedBreed = breedSelectElm.value;
+  const filteredDogs = selectedBreed
+    ? dogList.filter((dog) => extractBreedName(dog) === selectedBreed)
+    : dogList;
+  display(filteredDogs);
 };
