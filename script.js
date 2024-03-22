@@ -23,14 +23,13 @@ const display = (dogList) => {
   let i = 0;
   dogList.forEach((dog) => {
     const breedName = extractBreedName(dog);
+    const aboutDog = generateRandomDescription();
     dogCard += `<div class="card" style="width: 18rem">
-    <img src="${dog}" class="card-img-top" alt="Dog Image" />
+    <img src="${dog}" class="card-img-top" alt="Dog Image"/>
     <div class="card-body">
       <h5 class="card-title">${breedName}</h5>
       <p class="card-text">
-        Some quick example text to build on the card title and make up the
-        bulk of the card's content.
-      </p>
+        ${aboutDog}
     </div>
   </div> `;
     i++;
@@ -73,3 +72,35 @@ document.getElementById("search").addEventListener("keyup", (e) => {
 
   display(filtered);
 });
+
+const generateRandomDescription = () => {
+  const description = [
+    `<ul class="list-unstyled mt-3 mb-4">
+    <li>5 Matches Per Day</li>
+    <li>10 Messages Per Day</li>
+    <li>Unlimited App Usage</li>
+  </ul>
+  <button type="button" class="w-100 btn btn-lg btn-outline-dark">
+    Sign up for free
+  </button> `,
+    `<ul class="list-unstyled mt-3 mb-4">
+                  <li>Unlimited Matches</li>
+                  <li>Unlimited Messages</li>
+                  <li>Unlimited App Usage</li>
+                </ul>
+                <button type="button" class="w-100 btn btn-lg btn-dark">
+                  Get started
+                </button> `,
+    ` <ul class="list-unstyled mt-3 mb-4">
+                                <li>Pirority Listing</li>
+                                <li>Unlimited Matches & Messages</li>
+                                <li>Unlimited App Usage</li>
+                              </ul>
+                              <button type="button" class="w-100 btn btn-lg btn-dark">
+                                Contact us
+                              </button> `,
+  ];
+
+  const randomdes = Math.floor(Math.random() * description.length);
+  return description[randomdes];
+};
